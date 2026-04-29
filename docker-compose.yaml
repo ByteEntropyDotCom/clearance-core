@@ -5,8 +5,9 @@ services:
     build: .
     container_name: clearance-core-service
     ports:
-      - "8080:8080"
+      - "8083:8083" # Aligned with your project's previous 8083 port
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:clearancedb
-      - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8083
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+      - SPRING_H2_CONSOLE_ENABLED=true
     restart: unless-stopped
